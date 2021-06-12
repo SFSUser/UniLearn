@@ -10,10 +10,10 @@
     "isolatedModules": true,
     "strict": true,
     "moduleResolution": "node",
-    "baseUrl": "./src",
-    "typeRoots": ["node_modules/@types", "src/tsc/typings"],
+    "baseUrl": "./app",
+    "typeRoots": ["node_modules/@types", "assets/tsc/typings"],
     "esModuleInterop": true
   },
-  "include": ["src/**/*"],
+  "include": ["assets/**/*"],
   "exclude": ["node_modules"]
 }
