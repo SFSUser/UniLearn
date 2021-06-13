@@ -3,3 +3,8 @@ body {
     background-color: gainsboro !important;
     height: 100%;
 }
+
+.fixer{
+    max-width: $page-width;
+    margin: auto;
+}
