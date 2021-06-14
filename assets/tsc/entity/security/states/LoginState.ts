@@ -1,4 +1,4 @@
-import { IState } from "../../../core/IState";
+import IState from "../../../core/IState";
 import User from "../../user/User";
 
 export default class LoginState implements IState {

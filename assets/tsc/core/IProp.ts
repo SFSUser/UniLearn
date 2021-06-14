@@ -1,1 +1,1 @@
-export interface IProp {}
+export default interface IProp {}

@@ -13,7 +13,7 @@ export default class UserBL {
         let me = this;
         let response = await Request.get('user_data');
         if(response.OK){
-            me.session_data = response.Element;
+            me.session_data = response.getElement(User);
         }
         return response;
     }
@@ -25,6 +25,7 @@ export default class UserBL {
             password: user.password
         });
         if(response.OK){
+            me.session_data = response.getElement(User);
         }
         return response;
     }
