@@ -22,10 +22,10 @@ export default class SRouter {
         me._controllers = controllers;
     }
 
-    public static get(routeName: string){
+    public static async get(routeName: string){
         let me = this;
-        me.load();
-        let path = "";
+        await me.load();
+        let path = "invalid_" + routeName;
         me._controllers.forEach( controller => {
             controller.routes.forEach( route => {
                 if(route.name == routeName){

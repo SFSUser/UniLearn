@@ -18,16 +18,26 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main2:
+        #main2:
             #anonymous: true
-            lazy: true
-            logout: ~
-            guard:
-                authenticators:
-                    - App\Security\TokenAuthenticator
+        #    lazy: true
+        #    logout: ~
+        #    guard:
+        #        authenticators:
+        #            - App\Security\TokenAuthenticator
+        
         main:
             lazy: true
-            provider: user_provider
+            provider: user_provider 
+            #form_login:
+            #    check_path: user_check
+            #    login_path: user_data
+            json_login:
+                #remember_me: true
+                check_path: user_check
+            logout:
+                path:   user_logout
+                target: user_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
