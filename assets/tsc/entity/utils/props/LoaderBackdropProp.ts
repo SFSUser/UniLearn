@@ -1,7 +1,7 @@
 import IProp from '../../../core/IProp';
 
-export default class LoaderProp implements IProp {
+export default class LoaderBackdropProp implements IProp {
     public visible: boolean = false;
     public message: string = "";
-    public translucid: boolean = true;
+    public translucid?: boolean = true;
 }

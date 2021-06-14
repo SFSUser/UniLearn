@@ -6,7 +6,7 @@ import MainPage from './MainPage';
 import HomePage from './HomePage';
 import { MainContext } from '../context/MainContext';
 import LoginBL from '../BL/UserBL';
-import Loader from '../component/utils/Loader';
+import LoaderBackdrop from '../component/utils/LoaderBackdrop';
 import BasePageProp from '../entity/page/props/BasePageProp';
 import BasePageState from '../entity/page/states/BasePageState';
 
@@ -45,7 +45,7 @@ export default class BasePage extends Component<BasePageProp, BasePageState> {
         return (
             <div>
                 {me.state.busy ? 
-                    <Loader message="Cargando sitio" visible={true} translucid={false}/>
+                    <LoaderBackdrop message="Cargando sitio" visible={true} translucid={false}/>
                 :
                     <HashRouter>
                         <Navbar bg="light" variant="light">

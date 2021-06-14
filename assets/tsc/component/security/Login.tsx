@@ -9,6 +9,7 @@ import UserBL from "../../BL/UserBL";
 import { Redirect } from "react-router";
 import { MainContext } from '../../context/MainContext';
 import { HttpResponse } from "../../entity/common/HttpEntity";
+import LoaderBackdrop from "../utils/LoaderBackdrop";
 
 export default class Login extends Component<LoginProp, LoginState> {
     static contextType = MainContext;
@@ -19,10 +20,18 @@ export default class Login extends Component<LoginProp, LoginState> {
         SRouter.load();
     }
 
+    set Loader(state: boolean){
+        this.setState({
+            busy: state
+        });
+    }
+
     private async handleRegister(e: any){
         e.preventDefault();
         let me = this;
+        me.Loader = true;
         const result = await UserBL.register(me.state.user);
+        me.Loader = false;
         console.log(result);
         if(!result.OK){
             me.setState({
@@ -39,7 +48,9 @@ export default class Login extends Component<LoginProp, LoginState> {
     private async handleLogin(e: any){
         e.preventDefault();
         let me = this;
+        me.Loader = true;
         const result: HttpResponse = await UserBL.login(me.state.user);
+        me.Loader = false;
         console.log(result);
         me.context.main.Login = result.OK;
         console.log("Context", me.context.main);
@@ -64,6 +75,7 @@ export default class Login extends Component<LoginProp, LoginState> {
 
         return (
             <>
+                <LoaderBackdrop visible={me.state.busy} message="Procesando solicitud"/>
                 <Tabs defaultActiveKey="login" id="uncontrolled-tab-example">
                     <Tab eventKey="login" title="Iniciar sesión">
                         <div className="p-2 mt-3">
